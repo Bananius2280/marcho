@@ -5,7 +5,6 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const rename = require('gulp-rename');
-const nunjucksRender = require('gulp-nunjucks-render');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 
@@ -14,7 +13,7 @@ function browsersync() {
     server:{
       baseDir: 'app/'
     },
-    notofy: false
+    notify: false
   })
 }
 
@@ -102,4 +101,4 @@ exports.nunjucks = nunjucks;
 exports.cleanDist = cleanDist;
 exports.build = series(cleanDist, images, build);
 
-exports.default = parallel(nunjucks, styles, scripts, browsersync, watching);
+exports.default = parallel(styles, scripts, browsersync, watching);
